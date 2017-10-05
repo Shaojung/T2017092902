@@ -1,5 +1,6 @@
 package com.example.teacher.t2017092902;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -47,5 +48,31 @@ public class MainActivity extends AppCompatActivity {
     public void click4(View v)
     {
         pb2.setProgress(pb2.getProgress() + 10);
+    }
+    public void click5(View v)
+    {
+        final ProgressDialog pd = new ProgressDialog(MainActivity.this);
+        pd.show();
+        new Thread() {
+            @Override
+            public void run()
+            {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        pd.dismiss();
+                    }
+                });
+
+            }
+
+        }.start();
+
+
     }
 }
