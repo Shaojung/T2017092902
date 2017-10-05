@@ -52,13 +52,15 @@ public class MainActivity extends AppCompatActivity {
     public void click5(View v)
     {
         final ProgressDialog pd = new ProgressDialog(MainActivity.this);
+        pd.setMessage("Please Wait");
+        pd.setCancelable(false);
         pd.show();
         new Thread() {
             @Override
             public void run()
             {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(5000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
